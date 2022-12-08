@@ -1,0 +1,12 @@
+openapi: 3.0.3
+info:
+  title: Backstage
+  version: 1.0.0
+
+servers:
+  - url: https://demo.backstage.io
+    description: Backstage Demo
+
+# will be filled by sub-specifications
+paths: {}
+

@@ -1,0 +1,50 @@
+openapi: 3.0.3
+
+info:
+  title: Badges
+  description: |
+    Provides badges which you can add to your repositories' README.md files, etc.
+  version: 1.0.0
+
+# TODO: see plugins/badges-backend/src/service/router.ts
+paths:
+  '/entity/{namespace}/{kind}/{name}/badge-specs':
+    get:
+      parameters:
+        - in: path
+          name: namespace
+          required: true
+          example: default
+          schema:
+            type: string
+            pattern: '^\w+$'
+        - in: path
+          name: kind
+          required: true
+          example: component
+          schema:
+            type: string
+            pattern: '^\w+$'
+        - in: path
+          name: name
+          required: true
+          example: backstage
+          schema:
+            type: string
+            pattern: '^\w+$'
+      responses:
+        200:
+          description: GET Badge specs.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeSpecs'
+
+components:
+  schemas:
+    BadgeSpec:
+      type: object
+    BadgeSpecs:
+      type: array
+      items:
+        $ref: '#/components/schemas/BadgeSpec'

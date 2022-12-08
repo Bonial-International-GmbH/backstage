@@ -1,0 +1,40 @@
+openapi: 3.0.3
+
+info:
+  title: Catalog
+  description: |
+    The Catalog APIs provide you access to Backstage's software catalog.
+  version: 1.0.0
+
+# TODO: see plugins/catalog-backend/src/service/createRouter.ts
+paths:
+  '/refresh':
+    post:
+      operationId: refresh
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshOptions'
+      responses:
+        200:
+          description: Refresh completed.
+        404:
+          description: Refresh is disabled.
+
+components:
+  schemas:
+    RefreshOptions:
+      type: object
+      required:
+        - entityRef
+      properties:
+        entityRef:
+          $ref: '#/components/schemas/entityRef'
+        authorizationToken:
+          type: string
+          pattern: '^\S+$'
+    entityRef:
+      type: string
+      pattern: '^\w+:\w+/\w+$'
+      example: 'component:default/backstage'

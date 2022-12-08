@@ -1,0 +1,11 @@
+inputs:
+  - inputFile: openapi.base.yaml
+  - inputFile: openapi.api.yaml
+    pathModification:
+      prepend: '/api'
+    description:
+      append: true
+      title:
+        headingLevel: 2
+        value: APIs
+output: openai.yaml

@@ -1,0 +1,19 @@
+inputs:
+  - inputFile: openapi.base.yaml
+  - inputFile: plugins/badges-backend/openapi.yaml
+    pathModification:
+      prepend: '/badge'
+    description:
+      append: true
+      title:
+        headingLevel: 3
+        value: Badges APIs
+  - inputFile: plugins/catalog-backend/openapi.yaml
+    pathModification:
+      prepend: '/catalog'
+    description:
+      append: true
+      title:
+        headingLevel: 3
+        value: Catalog APIs
+output: openapi.api.yaml
